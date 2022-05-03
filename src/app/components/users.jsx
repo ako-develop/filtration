@@ -1,19 +1,22 @@
 import React, { useState } from "react"
 import Pagination from "./pagination"
 import { paginate } from "../utils/paginate"
-import User from "./user"
+import User from "./user";
+import api from "../api"
 import PropTypes from "prop-types"
 
 const Users = ({ users, ...rest }) => {
     const count = users.length
     const pageSize = 4
     const [currentPage, setCurrentPage] = useState(1)
+    const [profession, setProfession]=useState(api.professions.fetchAll())
     const handlePageChange = (pageIndex) => {
         setCurrentPage(pageIndex)
     }
     const userCrop = paginate(users, currentPage, pageSize)
     return (
         <>
+            {/* <GroupList items={professions} onItemSelect/> */}
             {count > 0 && (
                 <table className="table">
                     <thead>
