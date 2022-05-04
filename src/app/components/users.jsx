@@ -6,12 +6,12 @@ import api from "../api"
 import PropTypes from "prop-types"
 import GroupList from "./groupList";
 
-const Users = ({ users, ...rest }) => {
-    const [currentPage, setCurrentPage] = useState(1)
+const Users = ({ users: allUsers, ...rest }) => {
+    const [currentPage, setCurrentPage] = useState(1);
     const [professions, setProfessions]=useState();
-    const [selectedProf, setSelectedProf]=useState()
+    const [selectedProf, setSelectedProf]=useState();
 
-    const count = users.length
+    const count = allUsers.length
     const pageSize = 4
     useEffect(() => {
         api.professions.fetchAll().then((data) => setProfessions(data))
@@ -20,11 +20,13 @@ const Users = ({ users, ...rest }) => {
         setSelectedProf(item)
     };
     
-        // console.log(professions);
     const handlePageChange = (pageIndex) => {
         setCurrentPage(pageIndex)
-    }
-    const userCrop = paginate(users, currentPage, pageSize)
+    };
+
+    const filteredUsers = selectedProf ? allUsers.filter((user) => user.profession === selectedProf) : allUsers
+
+    const userCrop = paginate(filteredUsers, currentPage, pageSize);
     return (
         <>
           {professions && (
