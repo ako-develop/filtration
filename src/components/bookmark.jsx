@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 const BookMark = ({ status, ...rest }) => {
   const bookMarks = (textClass = '') => (
-    // <i className={'bi bi-flag' + textClass}></i>
     <i className={'bi bi-check-circle' + textClass}></i>
   )
 
