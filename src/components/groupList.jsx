@@ -55,11 +55,11 @@ GroupList.defaultProps = {
 }
 
 GroupList.propTypes = {
-  items: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-  valueProperty: PropTypes.string.isRequired,
-  contentProperty: PropTypes.string.isRequired,
-  onSelectItem: PropTypes.func.isRequired,
-  selectedItem: PropTypes.object
+  items:            PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  valueProperty:    PropTypes.string.isRequired,
+  contentProperty:  PropTypes.string.isRequired,
+  onSelectItem:     PropTypes.func.isRequired,
+  selectedItem:     PropTypes.object
 }
 
 export default GroupList
